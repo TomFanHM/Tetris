@@ -23,7 +23,16 @@ const useKeyboardControls = () => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      setMovement((m) => ({ ...m, [moveFieldByKey(e.code)]: true }));
+      const newMovement = {
+        forward: false,
+        backward: false,
+        left: false,
+        right: false,
+        space: false,
+        shift: false,
+        [moveFieldByKey(e.code)]: true,
+      };
+      setMovement(newMovement);
     };
     const handleKeyUp = (e: KeyboardEvent) => {
       setMovement((m) => ({ ...m, [moveFieldByKey(e.code)]: false }));

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Html } from "@react-three/drei";
 import { Playfield } from "./Playfield";
 import { Gear } from "../svg/gear";
@@ -7,13 +7,15 @@ const containerStyle =
   "w-[20rem] flex flex-col gap-4 items-center justify-center";
 const buttonStyle =
   "w-full rounded-lg px-4 py-2 bg-blue-500 text-blue-100 hover:bg-blue-600 duration-300";
-const pauseStyle = "absolute top-0 right-0 m-4 rounded-lg px-4 py-2";
+const pauseStyle = "absolute top-0 right-0 m-4 rounded-lg p-4 bg-blue-500 text-blue-100 hover:bg-blue-600 duration-300";
 
 export const Interface = () => {
   const [gameStart, setGameStart] = useState<boolean>(false);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [gameReset, setGameReset] = useState<boolean>(false);
   const [gameMute, setGameMute] = useState<boolean>(false);
+
+  useEffect(() => {}, []);
 
   const handleOnClickStart = () => {
     setGameStart(true);
@@ -61,7 +63,6 @@ export const Interface = () => {
         {gameStart && (
           <button className={pauseStyle} onClick={handleOnClickPause}>
             <Gear />
-            Pause
           </button>
         )}
       </Html>
